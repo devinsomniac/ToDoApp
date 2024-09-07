@@ -41,7 +41,7 @@ Navigate to ```http://localhost:5173``` in your browser to view the app.
 ## Configuration
 The Vite configuration is set up to serve the app from the /ToDoApp/ base path. If you are hosting it from a different path, update the base property in vite.config.js accordingly.
 
-##Usage
+## Usage
 - Add a Task: Type your task into the input field and click "Add Task."
 - Delete a Task: Click the delete icon next to a task to remove it from the list
 
