@@ -1,32 +1,70 @@
-import React, { useState } from 'react'
+import React from "react";
+import TextField from "@mui/material/TextField";
+import { Box } from "@mui/material";
+import backgroundImage from "../assets/box_bg.png";
+import IconButton from "@mui/material/IconButton";
+import AddTaskTwoToneIcon from "@mui/icons-material/AddTaskTwoTone";
 
-const InputField = ({addTask}) => {
-    const maxLength = 15
-    const [value,setValue] = useState("")
-    const handleChange = (e) => {
-        setValue(e.target.value)
-
-    }
-    const handleSubmit = () => {
-        if(value.trim()){
-            addTask(value)
-            setValue("")
-        }
-    }
+const InputField = () => {
   return (
-   
-    <div className="relative text-center">
-        <textarea 
-        onChange={handleChange} 
-        value={value}
-        maxLength={maxLength} 
-        className="maxLength={10} flex justify-center items-center bg-slate-300 border border-solid border-black h-14 w-72 text-center shadow-2xl rounded-lg m-8 ">
-        </textarea>
-        <p className="text-sm text-gray-500">{maxLength - value.length} characters remaining</p>
-        <p className="text-sm text-gray-500">Your Task will be saved for 7 Days</p>
-        <button onClick={handleSubmit} className="absolute bottom-16 right-6 bg-yellow-500 rounded-full w-8 h-8 flex items-center justify-center"><img width="30" height="30" src="https://img.icons8.com/dotty/30/add.png" alt="add"/></button>
+    <div className="flex justify-center items-center h-48">
+      <Box
+      className="w-64 h-40 relative"
+        sx={{
+          backgroundImage: `url(${backgroundImage})`, // Semi-transparent background
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          border: "1px solid grey",
+          borderRadius: "10px",
+          position: "relative",
+        }}
+      >
+        <TextField
+         className="absolute left-5 w-56"
+          id="outlined-basic"
+          label="Enter your task"
+          variant="outlined"
+          sx={{
+            input: { color: "white" }, // Optional: Text color inside the input field
+            "& .MuiInputLabel-root": {
+              color: "Black", // Default label color
+            },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: "Black", // Label color when focused
+            },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "black", // Optional: Border color of input field
+              },
+              "&:hover fieldset": {
+                borderColor: "black", // Border color on hover
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "black", // Border color when focused
+              },
+            },
+          }}
+        />
+        <IconButton
+          color="primary"
+          className="absolute right-2 top-5"
+          sx={{
+            background: "blue",
+            color: "yellow",
+            "&:hover": {
+              background: "blue", // Ensures background color remains on hover
+            },
+            "&:focus": {
+              background: "blue", // Ensures background color remains on focus
+            },
+          }}
+        >
+          <AddTaskTwoToneIcon />
+        </IconButton>
+      </Box>
     </div>
-  )
-}
+  );
+};
 
-export default InputField
+export default InputField;
