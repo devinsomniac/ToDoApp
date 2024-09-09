@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/material";
-import backgroundImage from "../assets/box_bg.png";
+import backgroundImage from "../assets/input_bg.png";
 import IconButton from "@mui/material/IconButton";
 import AddTaskTwoToneIcon from "@mui/icons-material/AddTaskTwoTone";
 
-const InputField = () => {
+const InputField = ({addTask}) => {
+  const [task,setTask] = useState("")
+  const handleChange =(e)=>{
+    setTask(e.target.value)
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addTask(task)
+    setTask("")
+  }
   return (
     <div className="flex justify-center items-center h-48">
       <Box
-      className="w-64 h-40 relative"
+      className="w-64 h-28 relative"
         sx={{
           backgroundImage: `url(${backgroundImage})`, // Semi-transparent background
           display: "flex",
@@ -21,12 +30,15 @@ const InputField = () => {
         }}
       >
         <TextField
-         className="absolute left-5 w-56"
-          id="outlined-basic"
+        value={task}
+        onChange={handleChange}
+         className="absolute left-5 w-56 text-center"
+           id="outlined-size-small"
           label="Enter your task"
           variant="outlined"
+          size="small"
           sx={{
-            input: { color: "white" }, // Optional: Text color inside the input field
+            input: { color: "black" , background:"#FEFF9C"}, // Optional: Text color inside the input field
             "& .MuiInputLabel-root": {
               color: "Black", // Default label color
             },
@@ -47,16 +59,22 @@ const InputField = () => {
           }}
         />
         <IconButton
+        onClick={handleSubmit}
           color="primary"
           className="absolute right-2 top-5"
           sx={{
-            background: "blue",
+            background: "green",
+            border:"3px solid yellow",
             color: "yellow",
             "&:hover": {
-              background: "blue", // Ensures background color remains on hover
+              background: "yellow", 
+              border:"3px solid green",
+              color:"green"
             },
             "&:focus": {
-              background: "blue", // Ensures background color remains on focus
+                background: "yellow", 
+                border:"3px solid green",
+                color:"green" 
             },
           }}
         >

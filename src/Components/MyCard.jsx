@@ -2,35 +2,40 @@ import React from "react";
 import { Box } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from '@mui/icons-material/Delete';
-const MyCard = () => {
+const MyCard = ({task,index,deleteTask}) => {
   return (
-    <div className="flex justify-center mx-5 my-5 relative w-60 py-3">
+    <div className="flex justify-center mx-3 my-3 relative w-60 h-20">
       <Box
-      className=" h-20 w-60 absolute bg-orange-300"
+      className=" h-16 w-60 absolute text-center"
         sx={{
-          borderRadius: "20px",
-          border: "1px solid yellow",
+          background:"#FEFF9C",
+          borderRadius: "10px 10px 0 0 ",
+          border: "2px solid yellow",
           overflow: "hidden", // Prevents overflowing content
           wordWrap: "break-word",
           padding:"10px"
         }}
       >
-        cvALJcvALJcvALJcvALJcvALJcvALJcvALJcvALJcv
+       {task}
         
       </Box>
-      <IconButton aria-label="delete" size="large" sx={{
+      <IconButton
+        onClick={()=>(deleteTask(index))} 
+        aria-label="delete" size="large" sx={{
         background:"red",
         color:"white",
+        border:"3px solid Yellow",
         "&:hover": {
               background: "yellow",
-              color:"red"
+              color:"red",
+              border:"3px solid red",
             },
             "&:focus": {
               background: "yellow",
               color:"red"
             },
       }}
-      className="absolute top-12 left-28 h-10 w-10">
+      className="absolute top-10 left-28 h-10 w-10">
         <DeleteIcon fontSize="inherit" />
       </IconButton>
     </div>
